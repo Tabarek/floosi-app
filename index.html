@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حمّل تطبيق فلوسي • Floosy</title>
+  <meta name="description" content="فلوسي - تطبيق لتتبع مصاريفك وإدارة ميزانيتك. متوفر على App Store و Google Play.">
+  <meta property="og:title" content="فلوسي • Floosy">
+  <meta property="og:description" content="تتبّع مصاريفك وأدر ميزانيتك بسهولة. حمّل التطبيق الآن.">
+  <meta property="og:image" content="icon.png">
+  <meta name="apple-itunes-app" content="app-id=6814285309">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <style>
+    :root {
+      --primary: #0D5C3A;
+      --primary-container: #E8F5EE;
+      --bg: #F8FAF9;
+      --surface: #FFFFFF;
+      --text: #0B1F14;
+      --text-muted: #526A5C;
+      --border: #E2EAE5;
+      --on-primary: #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #2EF874;
+        --primary-container: #0D281C;
+        --bg: #07130D;
+        --surface: #0D1F16;
+        --text: #F2FBF5;
+        --text-muted: #9DB5A7;
+        --border: #1C3527;
+        --on-primary: #04170C;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Cairo", Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 24px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(13, 92, 58, 0.08);
+    }
+    .icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    }
+    h1 { margin: 20px 0 4px; font-size: 26px; }
+    .tagline { margin: 0 0 28px; color: var(--text-muted); line-height: 1.7; }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 20px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: transform 0.1s ease, opacity 0.2s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn svg { width: 22px; height: 22px; flex: none; }
+    .btn-primary { background: var(--primary); color: var(--on-primary); }
+    .btn-secondary {
+      background: var(--primary-container);
+      color: var(--text);
+      margin-top: 12px;
+    }
+    .stores { display: none; }
+    .stores.show { display: block; }
+    .hint { margin-top: 20px; font-size: 13px; color: var(--text-muted); }
+    .hint a { color: var(--primary); }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="icon" src="icon.png" alt="Floosy" width="96" height="96">
+    <h1>فلوسي • Floosy</h1>
+    <p class="tagline">تتبّع مصاريفك وأدر ميزانيتك بسهولة<br>Track your expenses, manage your budget</p>
+
+    <!-- Shown on iOS / Android: one button for the detected store -->
+    <a id="download" class="btn btn-primary" href="#" hidden>
+      <span id="download-icon"></span>
+      <span>حمّل التطبيق • Download</span>
+    </a>
+
+    <!-- Shown on desktop / unknown devices: both stores -->
+    <div id="stores" class="stores">
+      <a id="ios-btn" class="btn btn-primary" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.77c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.33-3.54zM14.18 6.31c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
+        <span>App Store</span>
+      </a>
+      <a id="android-btn" class="btn btn-secondary" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8c-.24.25-.38.64-.38 1.14v18.12c0 .5.14.89.38 1.14l.06.06L13.8 12.1v-.24L3.66 1.74l-.06.06zM17.18 15.49 13.8 12.1v-.24l3.38-3.38.08.04 4 2.27c1.14.65 1.14 1.71 0 2.36l-4 2.27-.08.07zM17.26 15.42 13.8 11.97 3.6 22.2c.38.4 1 .45 1.7.05l11.96-6.83M17.26 8.53 5.3 1.7c-.7-.4-1.32-.35-1.7.05L13.8 11.97l3.46-3.44z"/></svg>
+        <span>Google Play</span>
+      </a>
+    </div>
+
+    <p id="hint" class="hint" hidden>
+      ليس جهازك؟ • Not your device?
+      <a id="other-store" href="#"></a>
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var APP_STORE_URL = 'https://apps.apple.com/app/id6814285309';
+      var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=iq.floosy.app';
+
+      var ua = navigator.userAgent || '';
+      // iPadOS 13+ reports itself as a Mac, so check for touch support too.
+      var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var isAndroid = /Android/i.test(ua);
+
+      document.getElementById('ios-btn').href = APP_STORE_URL;
+      document.getElementById('android-btn').href = PLAY_STORE_URL;
+
+      if (!isIOS && !isAndroid) {
+        document.getElementById('stores').classList.add('show');
+        return;
+      }
+
+      var target = isIOS ? APP_STORE_URL : PLAY_STORE_URL;
+      var sourceBtn = document.getElementById(isIOS ? 'ios-btn' : 'android-btn');
+      var download = document.getElementById('download');
+      download.href = target;
+      document.getElementById('download-icon').outerHTML = sourceBtn.querySelector('svg').outerHTML;
+      download.hidden = false;
+
+      var other = document.getElementById('other-store');
+      other.href = isIOS ? PLAY_STORE_URL : APP_STORE_URL;
+      other.textContent = isIOS ? 'Google Play' : 'App Store';
+      document.getElementById('hint').hidden = false;
+
+      // Optional: ?auto=1 redirects immediately (handy for QR codes).
+      if (/[?&]auto=1\b/.test(location.search)) {
+        location.replace(target);
+      }
+    })();
+  </script>
+</body>
+</html>
